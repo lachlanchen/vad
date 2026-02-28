@@ -1,7 +1,10 @@
 [English](README.md) · [العربية](i18n/README.ar.md) · [Español](i18n/README.es.md) · [Français](i18n/README.fr.md) · [日本語](i18n/README.ja.md) · [한국어](i18n/README.ko.md) · [Tiếng Việt](i18n/README.vi.md) · [中文 (简体)](i18n/README.zh-Hans.md) · [中文（繁體）](i18n/README.zh-Hant.md) · [Deutsch](i18n/README.de.md) · [Русский](i18n/README.ru.md)
 
 
+---
+
 [![LazyingArt banner](https://github.com/lachlanchen/lachlanchen/raw/main/figs/banner.png)](https://github.com/lachlanchen/lachlanchen/blob/main/figs/banner.png)
+---
 
 # 🎙️ Voice Activity Detection for JavaScript
 
@@ -12,17 +15,23 @@
 [![Monorepo](https://img.shields.io/badge/repo-monorepo-111827?style=flat-square)](https://github.com/ricky0123/vad)
 [![Discord](https://img.shields.io/badge/discord-community-5865F2?style=flat-square&logo=discord&logoColor=white)](https://discord.gg/4WPeGEaSpF)
 [![License: ISC](https://img.shields.io/badge/license-ISC-2ea44f?style=flat-square)](LICENSE)
+[![CI](https://img.shields.io/github/actions/workflow/status/ricky0123/vad/test.yml?branch=main&style=flat-square&label=CI)](https://github.com/ricky0123/vad/actions/workflows/test.yml)
+[![Typecheck](https://img.shields.io/github/actions/workflow/status/ricky0123/vad/typecheck.yml?branch=main&style=flat-square&label=Typecheck)](https://github.com/ricky0123/vad/actions/workflows/typecheck.yml)
+[![Docs](https://img.shields.io/github/actions/workflow/status/ricky0123/vad/docs.yml?branch=main&style=flat-square&label=Docs)](https://github.com/ricky0123/vad/actions/workflows/docs.yml)
+[![GitHub stars](https://img.shields.io/github/stars/ricky0123/vad?style=flat-square&logo=github)](https://github.com/ricky0123/vad)
+[![Node.js 18+](https://img.shields.io/badge/Node-18%2B-339933?style=flat-square&logo=node.js&logoColor=white)](https://nodejs.org/)
+[![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-3776AB?style=flat-square&logo=python&logoColor=white)](https://www.python.org/)
 
 > Run callbacks on segments of audio with user speech in a few lines of code.
 
 This package aims to provide an accurate, user-friendly voice activity detector (VAD) that runs in the browser. By using this package, you can prompt the user for microphone permissions, start recording audio, send segments of audio with speech to your server for processing, or show a certain animation or indicator when the user is speaking. Note that I have decided [to discontinue node support](#important-update-about-node-support---oct-2024-) in order to focus on the browser use case.
 
-| At a glance | Details |
+| 🧭 At a glance | Details |
 | --- | --- |
-| Core packages | `@ricky0123/vad-web`, `@ricky0123/vad-react` |
-| Primary runtime | Browser (`WebAudio` + `getUserMedia`) |
-| Docs | [docs.vad.ricky0123.com](https://docs.vad.ricky0123.com/) |
-| Live demo | [vad.ricky0123.com](https://www.vad.ricky0123.com) |
+| 📦 Core packages | `@ricky0123/vad-web`, `@ricky0123/vad-react` |
+| 🧪 Primary runtime | Browser (`WebAudio` + `getUserMedia`) |
+| 📚 Docs | [docs.vad.ricky0123.com](https://docs.vad.ricky0123.com/) |
+| 🌐 Live demo | [vad.ricky0123.com](https://www.vad.ricky0123.com) |
 
 ## Table of Contents
 
@@ -40,11 +49,11 @@ This package aims to provide an accurate, user-friendly voice activity detector 
 - [CI & Quality Gates 🧱](#ci--quality-gates-)
 - [Troubleshooting 🩺](#troubleshooting-)
 - [Sponsorship ❤️](#sponsorship-)
-- [❤️ Support](#-support)
 - [Important update about node support - Oct 2024 📢](#important-update-about-node-support---oct-2024-)
 - [Roadmap 🛣️](#roadmap-)
 - [Contributing 🤝](#contributing-)
 - [References 📚](#references-)
+- [❤️ Support](#-support)
 - [License 📄](#license-)
 
 ## Quick Links 🔗
@@ -348,12 +357,6 @@ These workflows are a practical source of truth for expected runtime/tool versio
 
 Please contribute to the project financially - especially if your commercial product relies on this package. [![Become a Sponsor](https://img.shields.io/static/v1?label=Become%20a%20Sponsor&message=%E2%9D%A4&logo=GitHub&style=flat&color=d42f2d)](https://github.com/sponsors/ricky0123)
 
-## ❤️ Support
-
-| Donate | PayPal | Stripe |
-|---|---|---|
-| [![Donate](https://img.shields.io/badge/Donate-LazyingArt-0EA5E9?style=for-the-badge&logo=ko-fi&logoColor=white)](https://chat.lazying.art/donate) | [![PayPal](https://img.shields.io/badge/PayPal-RongzhouChen-00457C?style=for-the-badge&logo=paypal&logoColor=white)](https://paypal.me/RongzhouChen) | [![Stripe](https://img.shields.io/badge/Stripe-Donate-635BFF?style=for-the-badge&logo=stripe&logoColor=white)](https://buy.stripe.com/aFadR8gIaflgfQV6T4fw400) |
-
 ## Important update about node support - Oct 2024 📢
 
 I am going to wind down support for `ricky0123/vad-node`, the voice activity detection package for server-side node environments. I do not plan to publish any updates to the node package from here on out. I made this decision for the following reasons:
@@ -381,6 +384,12 @@ Current direction (based on repository state and maintainer note above):
 ## References 📚
 
 1. Silero VAD repository: [github.com/snakers4/silero-vad](https://github.com/snakers4/silero-vad)
+
+## ❤️ Support
+
+| Donate | PayPal | Stripe |
+| --- | --- | --- |
+| [![Donate](https://camo.githubusercontent.com/24a4914f0b42c6f435f9e101621f1e52535b02c225764b2f6cc99416926004b7/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f446f6e6174652d4c617a79696e674172742d3045413545393f7374796c653d666f722d7468652d6261646765266c6f676f3d6b6f2d6669266c6f676f436f6c6f723d7768697465)](https://chat.lazying.art/donate) | [![PayPal](https://camo.githubusercontent.com/d0f57e8b016517a4b06961b24d0ca87d62fdba16e18bbdb6aba28e978dc0ea21/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f50617950616c2d526f6e677a686f754368656e2d3030343537433f7374796c653d666f722d7468652d6261646765266c6f676f3d70617970616c266c6f676f436f6c6f723d7768697465)](https://paypal.me/RongzhouChen) | [![Stripe](https://camo.githubusercontent.com/1152dfe04b6943afe3a8d2953676749603fb9f95e24088c92c97a01a897b4942/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f5374726970652d446f6e6174652d3633354246463f7374796c653d666f722d7468652d6261646765266c6f676f3d737472697065266c6f676f436f6c6f723d7768697465)](https://buy.stripe.com/aFadR8gIaflgfQV6T4fw400) |
 
 ## License 📄
 

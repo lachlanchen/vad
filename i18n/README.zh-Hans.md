@@ -1,98 +1,103 @@
 [English](../README.md) · [العربية](README.ar.md) · [Español](README.es.md) · [Français](README.fr.md) · [日本語](README.ja.md) · [한국어](README.ko.md) · [Tiếng Việt](README.vi.md) · [中文 (简体)](README.zh-Hans.md) · [中文（繁體）](README.zh-Hant.md) · [Deutsch](README.de.md) · [Русский](README.ru.md)
 
 
-
 [![LazyingArt banner](https://github.com/lachlanchen/lachlanchen/raw/main/figs/banner.png)](https://github.com/lachlanchen/lachlanchen/blob/main/figs/banner.png)
 
-# Javascript 语音活动检测
+# 🎙️ JavaScript 语音活动检测
 
 [![npm vad-web](https://img.shields.io/npm/v/@ricky0123/vad-web?color=0b69d7&label=%40ricky0123%2Fvad-web&style=flat-square)](https://www.npmjs.com/package/@ricky0123/vad-web)
 [![npm vad-react](https://img.shields.io/npm/v/@ricky0123/vad-react?color=0b69d7&label=%40ricky0123%2Fvad-react&style=flat-square)](https://www.npmjs.com/package/@ricky0123/vad-react)
 [![Docs](https://img.shields.io/badge/docs-vad.ricky0123.com-0a7f5a?style=flat-square)](https://docs.vad.ricky0123.com/)
 [![Demo](https://img.shields.io/badge/demo-live-ff8c00?style=flat-square)](https://www.vad.ricky0123.com)
+[![Monorepo](https://img.shields.io/badge/repo-monorepo-111827?style=flat-square)](https://github.com/ricky0123/vad)
 [![Discord](https://img.shields.io/badge/discord-community-5865F2?style=flat-square&logo=discord&logoColor=white)](https://discord.gg/4WPeGEaSpF)
 [![License: ISC](https://img.shields.io/badge/license-ISC-2ea44f?style=flat-square)](LICENSE)
+[![CI](https://img.shields.io/github/actions/workflow/status/ricky0123/vad/test.yml?branch=main&style=flat-square&label=CI)](https://github.com/ricky0123/vad/actions/workflows/test.yml)
+[![Typecheck](https://img.shields.io/github/actions/workflow/status/ricky0123/vad/typecheck.yml?branch=main&style=flat-square&label=Typecheck)](https://github.com/ricky0123/vad/actions/workflows/typecheck.yml)
+[![Docs](https://img.shields.io/github/actions/workflow/status/ricky0123/vad/docs.yml?branch=main&style=flat-square&label=Docs)](https://github.com/ricky0123/vad/actions/workflows/docs.yml)
+[![GitHub stars](https://img.shields.io/github/stars/ricky0123/vad?style=flat-square&logo=github)](https://github.com/ricky0123/vad)
+[![Node.js 18+](https://img.shields.io/badge/Node-18%2B-339933?style=flat-square&logo=node.js&logoColor=white)](https://nodejs.org/)
+[![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-3776AB?style=flat-square&logo=python&logoColor=white)](https://www.python.org/)
 
-> 仅需几行代码，即可在检测到用户语音的音频片段上触发回调。
+> 只需几行代码，即可在用户说话的音频片段上执行回调。
 
-这个包旨在提供一个准确、易用、可在浏览器中运行的语音活动检测器（VAD）。使用该包，你可以向用户请求麦克风权限、开始录音、将包含语音的音频片段发送到服务器进行处理，或在用户说话时显示特定动画或指示器。请注意，我已决定[停止 Node 支持](#important-update-about-node-support---oct-2024-)以便专注于浏览器场景。
+该软件包旨在提供一个准确、友好的浏览器端语音活动检测（VAD）实现。通过本软件包，你可以申请麦克风权限、开始录音、将包含语音的音频片段发送到你的服务端处理，或在用户正在说话时显示动画或指示器。注意：我已决定[停止 node 支持](#important-update-about-node-support---oct-2024-)以便把精力集中在浏览器场景。
 
-## 目录
+| 🧭 快速概览 | 详情 |
+| --- | --- |
+| 📦 核心包 | `@ricky0123/vad-web`, `@ricky0123/vad-react` |
+| 🧪 主要运行环境 | 浏览器（`WebAudio` + `getUserMedia`） |
+| 📚 文档 | [docs.vad.ricky0123.com](https://docs.vad.ricky0123.com/) |
+| 🌐 在线演示 | [vad.ricky0123.com](https://www.vad.ricky0123.com) |
 
-- [快速链接 🔗](#quick-links-)
-- [概览 🧭](#overview-)
-- [特性 ✨](#features-)
-- [项目结构 🗂️](#project-structure-)
-- [兼容性矩阵 🧩](#compatibility-matrix-)
-- [前置要求 ✅](#prerequisites-)
-- [安装 📦](#installation-)
-- [用法 🚀](#usage-)
-- [配置 ⚙️](#configuration-)
-- [示例 🧪](#examples-)
-- [开发说明 🛠️](#development-notes-)
-- [CI 与质量门禁 🧱](#ci--quality-gates-)
-- [故障排查 🩺](#troubleshooting-)
-- [赞助 ❤️](#sponsorship-)
+## Table of Contents
+
+- [Quick Links 🔗](#quick-links-)
+- [Overview 🧭](#overview-)
+- [Features ✨](#features-)
+- [Project Structure 🗂️](#project-structure-)
+- [Compatibility Matrix 🧩](#compatibility-matrix-)
+- [Prerequisites ✅](#prerequisites-)
+- [Installation 📦](#installation-)
+- [Usage 🚀](#usage-)
+- [Configuration ⚙️](#configuration-)
+- [Examples 🧪](#examples-)
+- [Development Notes 🛠️](#development-notes-)
+- [CI & Quality Gates 🧱](#ci--quality-gates-)
+- [Troubleshooting 🩺](#troubleshooting-)
+- [Sponsorship ❤️](#sponsorship-)
+- [Important update about node support - Oct 2024 📢](#important-update-about-node-support---oct-2024-)
+- [Roadmap 🛣️](#roadmap-)
+- [Contributing 🤝](#contributing-)
+- [References 📚](#references-)
 - [❤️ Support](#-support)
-- [关于 Node 支持的重要更新 - 2024 年 10 月 📢](#important-update-about-node-support---oct-2024-)
-- [路线图 🛣️](#roadmap-)
-- [贡献 🤝](#contributing-)
-- [参考资料 📚](#references-)
-- [许可证 📄](#license-)
+- [License 📄](#license-)
 
-<a id="quick-links-"></a>
+## Quick Links 🔗
 
-## 快速链接 🔗
-
-| 资源 | 链接 |
+| Resource | Link |
 | --- | --- |
 | 在线演示 | [vad.ricky0123.com](https://www.vad.ricky0123.com) |
 | 文档 | [docs.vad.ricky0123.com](https://docs.vad.ricky0123.com/) |
 | Discord | [加入社区](https://discord.gg/4WPeGEaSpF) |
-| 调研问卷 | [分享你的使用场景](https://uaux2a2ppfv.typeform.com/to/iJG2gCQv) |
-| 贡献指南 | [开发者 hacking 指南](https://docs.vad.ricky0123.com/developer-guide/hacking/) |
+| 调研 | [分享你的使用场景](https://uaux2a2ppfv.typeform.com/to/iJG2gCQv) |
+| 贡献指南 | [开发者开发指南](https://docs.vad.ricky0123.com/developer-guide/hacking/) |
 
-- 浏览文档，其源码位于 `./docs` 目录。
-- 如果你想贡献，我已开始编写如何参与这些包开发的文档，见[这里](https://docs.vad.ricky0123.com/developer-guide/hacking/)。如有疑问，你可以在这里提 issue，或在 Discord 留言。
+- 文档源码位于 `./docs`。
+- 贡献者入门从这里开始：[developer hacking guide](https://docs.vad.ricky0123.com/developer-guide/hacking/)。如有问题，可在 Issue 或 Discord 提出。
 
-在底层，这些包通过 [ONNX Runtime Web](https://github.com/microsoft/onnxruntime/tree/main/js/web) / [ONNX Runtime Node.js](https://github.com/microsoft/onnxruntime/tree/main/js/node) 运行 [Silero VAD](https://github.com/snakers4/silero-vad) [[1]](#references)。非常感谢这些项目的贡献者让这件事成为可能。
+在底层，这些包通过 [ONNX Runtime Web](https://github.com/microsoft/onnxruntime/tree/main/js/web)（带有历史上对 ONNX Runtime Node.js 的引用，来自此前的 Node 支持）运行 [Silero VAD](https://github.com/snakers4/silero-vad) [[1]](#references)。感谢这些开源项目，使这一切成为可能。
 
-i18n 状态说明：`i18n/` 文件夹中包含与顶部语言选项对应的 README 翻译内容。
+关于 i18n 的说明：`i18n/` 包含本文件顶部已列出的语言对应 README 翻译。
 
-<a id="overview-"></a>
+## Overview 🧭
 
-## 概览 🧭
+该仓库是一个 monorepo，包含两个主要发布包：
 
-这个仓库是一个 monorepo，主要发布两个包：
-
-| 包名 | 用途 |
+| Package | 用途 |
 | --- | --- |
-| `@ricky0123/vad-web` | 浏览器 API，包括 `MicVAD`、`AudioNodeVAD` 和 `NonRealTimeVAD` |
-| `@ricky0123/vad-react` | `vad-web` 的 React Hook 封装（`useMicVAD`） |
+| `@ricky0123/vad-web` | 浏览器 API，包含 `MicVAD`、`AudioNodeVAD` 和 `NonRealTimeVAD` |
+| `@ricky0123/vad-react` | `vad-web` 的 React Hook 封装器（`useMicVAD`） |
 
-该项目以浏览器优先，并包含：
+项目采用浏览器优先策略，包含：
 
 - 实时麦克风分段回调（`onSpeechStart`、`onSpeechEnd`、`onVADMisfire` 等）
-- 可配置的算法阈值与时序控制
-- 支持 Silero legacy 与 v5 模型
-- 本仓库内的 demo/测试应用及文档站点源码
+- 可配置的算法阈值和时间参数
+- 支持 legacy 与 v5 Silero 模型
+- 仓库内提供示例应用和文档站源码
 
-<a id="features-"></a>
+## Features ✨
 
-## 特性 ✨
-
-- 由 Silero ONNX 模型驱动、浏览器优先的 VAD 流水线
-- 支持 script tags、bundler 与 React
-- 提供合理的默认麦克风流约束
+- 由 Silero ONNX 模型驱动的浏览器优先 VAD 流程
+- 支持脚本标签、打包器和 React
+- 合理的麦克风流默认约束
 - 可覆盖的流生命周期（`getStream`、`pauseStream`、`resumeStream`）
-- 通过 `NonRealTimeVAD` 对预录音频进行非实时语音分段
-- 通过 `baseAssetPath` 与 `onnxWASMBasePath` 配置模型/资源加载
-- 通过内置封装同时支持 legacy 与 v5 模型状态处理
-- 提供 script tags、webpack bundler、React bundler 与 Next.js 示例
+- 通过 `NonRealTimeVAD` 支持预录音频的非实时语音分段
+- 可通过 `baseAssetPath` 与 `onnxWASMBasePath` 配置模型与运行时资源加载
+- 通过内置包装器同时支持 legacy 与 v5 模型状态
+- 提供 script tag、webpack 打包器、React 打包器与 Next.js 示例
 
-<a id="project-structure-"></a>
-
-## 项目结构 🗂️
+## Project Structure 🗂️
 
 ```text
 .
@@ -111,66 +116,61 @@ i18n 状态说明：`i18n/` 文件夹中包含与顶部语言选项对应的 REA
 
 更详细的路径：
 
-- `packages/web/src/real-time-vad.ts`：实时麦克风/AudioNode VAD 编排
-- `packages/web/src/non-real-time-vad.ts`：用于预录音频的异步分段
-- `packages/web/src/frame-processor.ts`：阈值与语音片段边界逻辑
-- `packages/react/src/index.ts`：`useMicVAD` React Hook 的生命周期与状态封装
+- `packages/web/src/real-time-vad.ts`：实时麦克风/audio-node VAD 的编排实现
+- `packages/web/src/non-real-time-vad.ts`：预录音频的异步分段
+- `packages/web/src/frame-processor.ts`：阈值判断与语音片段边界逻辑
+- `packages/react/src/index.ts`：`useMicVAD` React hook 生命周期与状态封装
 
-<a id="compatibility-matrix-"></a>
+## Compatibility Matrix 🧩
 
-## 兼容性矩阵 🧩
-
-| 组件 | 环境 |
+| 组件 | 支持环境 |
 | --- | --- |
-| `@ricky0123/vad-web` | 支持 WebAudio + `MediaDevices.getUserMedia` 的现代浏览器 |
+| `@ricky0123/vad-web` | 现代浏览器（支持 `WebAudio` + `MediaDevices.getUserMedia`） |
 | `@ricky0123/vad-react` | React 应用（`react` / `react-dom` >= 16.8.0） |
-| 文档工具链 | Python 3.10 + Poetry（按 CI workflow） |
-| CI Node 运行时 | Node 18（按仓库 workflows） |
+| 文档工具链 | Python 3.10 + Poetry（按 CI 工作流） |
+| CI Node 运行时 | Node 18（按仓库工作流） |
 
-假设说明：示例和文档与该仓库快照中的当前包版本一致（`@ricky0123/vad-web@0.0.27`、`@ricky0123/vad-react@0.0.33`）。
+仓库快照中的包版本（`packages/*/package.json`）：
 
-<a id="prerequisites-"></a>
+- `@ricky0123/vad-web@0.0.27`
+- `@ricky0123/vad-react@0.0.33`
 
-## 前置要求 ✅
+## Prerequisites ✅
 
-- 浏览器使用：支持 `MediaDevices.getUserMedia` 的现代浏览器
+- 浏览器使用：现代浏览器，支持 `MediaDevices.getUserMedia`
 - 本地开发：Node.js + npm workspaces
 - 文档开发：Python + Poetry（用于 MkDocs 构建）
 
-基于 CI 配置，推荐本地基线版本：
+基于 CI 配置的建议本地基线：
 
 - Node.js 18.x
 - Python 3.10.x
 
-<a id="installation-"></a>
+## Installation 📦
 
-## 安装 📦
-
-安装浏览器包：
+安装浏览器端包：
 
 ```bash
 npm i @ricky0123/vad-web
 ```
 
-安装 React 封装：
+安装 React 包装器：
 
 ```bash
 npm i @ricky0123/vad-react
 ```
 
-安装 monorepo 依赖（贡献者）：
+安装 monorepo 依赖（供贡献者使用）：
 
 ```bash
 npm install
 ```
 
-<a id="usage-"></a>
+## Usage 🚀
 
-## 用法 🚀
+### Quick Start (script tags)
 
-### 快速开始（script tags）
-
-要在浏览器中通过 script tag 使用 VAD，请包含以下 script tags：
+在浏览器里通过 script 标签使用 VAD，请引入以下脚本：
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web@1.22.0/dist/ort.js"></script>
@@ -193,7 +193,7 @@ npm install
 </script>
 ```
 
-### 浏览器包用法（模块导入）
+### Browser package usage (module import)
 
 ```ts
 import { MicVAD } from "@ricky0123/vad-web"
@@ -207,7 +207,7 @@ const myvad = await MicVAD.new({
 myvad.start()
 ```
 
-### React 用法
+### React usage
 
 ```tsx
 import { useMicVAD } from "@ricky0123/vad-react"
@@ -223,7 +223,7 @@ export function MyComponent() {
 }
 ```
 
-### 非实时用法（批处理音频）
+### Non-real-time usage (batch audio)
 
 ```ts
 import { NonRealTimeVAD } from "@ricky0123/vad-web"
@@ -234,17 +234,15 @@ for await (const { audio, start, end } of myvad.run(audioData, sampleRate)) {
 }
 ```
 
-<a id="configuration-"></a>
+## Configuration ⚙️
 
-## 配置 ⚙️
+常见参数如下：
 
-这些 API 的常见选项包括：
-
-- `positiveSpeechThreshold`（实时 API 中默认约为 `0.3`）
-- `negativeSpeechThreshold`（实时 API 中默认约为 `0.25`）
-- `redemptionMs`（实时 API 中默认约为 `1400`）
-- `preSpeechPadMs`（实时 API 中默认约为 `800`）
-- `minSpeechMs`（实时 API 中默认约为 `400`）
+- `positiveSpeechThreshold`（实时 API 默认约为 `0.3`）
+- `negativeSpeechThreshold`（实时 API 默认约为 `0.25`）
+- `redemptionMs`（实时 API 默认约为 `1400`）
+- `preSpeechPadMs`（实时 API 默认约为 `800`）
+- `minSpeechMs`（实时 API 默认约为 `400`）
 
 实时 API（`MicVAD`、`useMicVAD`）还支持：
 
@@ -252,20 +250,20 @@ for await (const { audio, start, end } of myvad.run(audioData, sampleRate)) {
 - `onFrameProcessed`、`onSpeechStart`、`onSpeechRealStart`、`onSpeechEnd`、`onVADMisfire`
 - `submitUserSpeechOnPause`
 - `model`（`"legacy"` 或 `"v5"`）
-- `baseAssetPath` 与 `onnxWASMBasePath`
+- `baseAssetPath` 和 `onnxWASMBasePath`
 - `workletOptions`
 
-完整 API 表请查看文档：[API reference](https://docs.vad.ricky0123.com/user-guide/api/) 与 [algorithm guide](https://docs.vad.ricky0123.com/user-guide/algorithm/)。
+完整 API 表见文档：[API reference](https://docs.vad.ricky0123.com/user-guide/api/) 与 [algorithm guide](https://docs.vad.ricky0123.com/user-guide/algorithm/)。
 
-### 配置示例：自托管模型与运行时资源
+### Configuration recipe: self-hosting model and runtime assets
 
-当不使用 CDN 默认值时，请确保你的应用提供：
+若不使用 CDN 默认值，请确保你的应用能提供以下资源：
 
 - `silero_vad_legacy.onnx` 和/或 `silero_vad_v5.onnx`
 - `vad.worklet.bundle.min.js`
-- `onnxruntime-web` 运行时文件（`.wasm`；较新运行时构建还需要 `.mjs`）
+- `onnxruntime-web` 运行时文件（`.wasm`，以及较新运行时的 `.mjs`）
 
-然后这样配置：
+然后按如下配置：
 
 ```ts
 const vad = await MicVAD.new({
@@ -277,30 +275,26 @@ const vad = await MicVAD.new({
 })
 ```
 
-<a id="examples-"></a>
+## Examples 🧪
 
-## 示例 🧪
+仓库示例：
 
-仓库中的示例：
-
-- `examples/script-tags`：基础 script-tag 配置
-- `examples/bundler`：webpack + `@ricky0123/vad-web`
-- `examples/react-bundler`：webpack + `@ricky0123/vad-react`
+- `examples/script-tags`：基础 script tag 示例
+- `examples/bundler`：`webpack` + `@ricky0123/vad-web`
+- `examples/react-bundler`：`webpack` + `@ricky0123/vad-react`
 - `examples/nextjs`：Next.js 集成示例
 
-来自 `examples/bundler` 的示例命令：
+`examples/bundler` 示例命令：
 
 ```bash
 npm run build && npm run start
 ```
 
-关于在浏览器中打包语音活动检测器或在 Node/React 项目中使用它的文档，可在 [vad.ricky0123.com](https://www.vad.ricky0123.com) 查看。
+在浏览器中打包 VAD，或在 Node/React 项目中使用，详见 [vad.ricky0123.com](https://www.vad.ricky0123.com)。
 
-<a id="development-notes-"></a>
+## Development Notes 🛠️
 
-## 开发说明 🛠️
-
-根工作区脚本：
+仓库根目录脚本：
 
 ```bash
 npm run build
@@ -311,14 +305,14 @@ npm run format-check
 npm run dev
 ```
 
-作用说明：
+它们的作用：
 
-- `npm run build`：构建所有 workspaces
+- `npm run build`：构建所有 workspace
 - `npm run test`：运行 workspace 测试
-- `npm run test:coverage`：为 `packages/web` 生成覆盖率
-- `npm run typecheck`：检查 packages、test-site 和 tests 中的 TypeScript
+- `npm run test:coverage`：`packages/web` 覆盖率
+- `npm run typecheck`：检查 `packages`、`test-site` 和测试的 TypeScript
 - `npm run format-check`：检查 `packages`、`examples`、`test-site` 下 TS/TSX 的格式
-- `npm run dev`：监听 package 与 test-site 源码，重建并提供 `test-site/dist`
+- `npm run dev`：监听 package 与 test-site 源码、重建并服务 `test-site/dist`
 
 文档构建（MkDocs + Poetry）：
 
@@ -329,15 +323,13 @@ poetry run mkdocs serve
 
 补充说明：
 
-- `./test-site/build.sh` 会把所需的 VAD/ONNX Runtime 资源复制到 `test-site/dist` 和 `test-site/dist/subpath`
-- `./scripts/dev.sh` 使用 `nodemon` + `live-server` 在 `8080` 端口进行本地重建与服务循环
-- `./check_vad_up_to_date.sh` 为历史脚本，仍引用 `silero_vad.onnx`（而此仓库实际提供 `silero_vad_legacy.onnx` 与 `silero_vad_v5.onnx`）
+- `./test-site/build.sh` 会将所需 VAD/ONNX Runtime 资源复制到 `test-site/dist` 和 `test-site/dist/subpath`
+- `./scripts/dev.sh` 使用 `nodemon` + `live-server` 在本地循环重建并监听 `8080` 端口
+- `./check_vad_up_to_date.sh` 为历史遗留脚本，仍引用 `silero_vad.onnx`（而仓库实际提供 `silero_vad_legacy.onnx` 与 `silero_vad_v5.onnx`）
 
-<a id="ci--quality-gates-"></a>
+## CI & Quality Gates 🧱
 
-## CI 与质量门禁 🧱
-
-`.github/workflows/` 中的 GitHub workflows 覆盖：
+`.github/workflows/` 下的 GitHub 工作流包括：
 
 - 测试（`test.yml`）
 - 类型检查（`typecheck.yml`）
@@ -345,73 +337,57 @@ poetry run mkdocs serve
 - 文档构建/部署（`docs.yml`）
 - 发布流程（`publish.yml`）
 
-这些 workflows 是预期运行时/工具版本和发布检查项的实用事实来源。
+这些工作流是当前可执行环境版本与发布校验的实际准则。
 
-<a id="troubleshooting-"></a>
+## Troubleshooting 🩺
 
-## 故障排查 🩺
-
-| 症状 | 检查 / 修复 |
+| 症状 | 检查与修复 |
 | --- | --- |
-| 麦克风权限被拒绝 | 确认浏览器已为你的来源授予麦克风权限。 |
-| 资源加载失败（`.onnx`、`.wasm`、`.mjs`、worklet） | 正确设置 `baseAssetPath` / `onnxWASMBasePath`，并确认文件确实已被服务。 |
-| 较新 `onnxruntime-web` 运行时问题 | 除了 `.wasm` 外，还要提供 `.mjs` 文件。 |
-| 非安全来源下的本地开发 | 浏览器麦克风 API 通常要求安全上下文（`https` 或 `localhost`）。 |
-| 构建阶段的 bundler 问题 | 参考 [browser docs](https://docs.vad.ricky0123.com/user-guide/browser/) 中的打包指引。 |
-| Next.js 集成问题 | 参考 [`examples/nextjs/next.config.js`](examples/nextjs/next.config.js) 中的配置模式，并校验静态资源托管路径。 |
+| 麦克风权限被拒绝 | 确保浏览器已允许你的站点访问麦克风权限 |
+| 资源加载失败（`.onnx`、`.wasm`、`.mjs`、worklet） | 正确设置 `baseAssetPath` / `onnxWASMBasePath`，并确认文件已正确提供 |
+| 新版 `onnxruntime-web` 运行时问题 | 需要同时提供 `.mjs` 文件，不只是 `.wasm` |
+| 本地开发使用不安全源（非 HTTPS） | 浏览器麦克风 API 通常要求安全上下文（`https` 或 `localhost`） |
+| 打包构建阶段问题 | 按[浏览器文档](https://docs.vad.ricky0123.com/user-guide/browser/)提供的打包指引处理 |
+| Next.js 集成问题 | 按 [`examples/nextjs/next.config.js`](examples/nextjs/next.config.js) 中的配置模式，并核对静态资源托管路径 |
 
-<a id="sponsorship-"></a>
+## Sponsorship ❤️
 
-## 赞助 ❤️
+若你的产品是商业用途，欢迎对项目进行经济支持：[![Become a Sponsor](https://img.shields.io/static/v1?label=Become%20a%20Sponsor&message=%E2%9D%A4&logo=GitHub&style=flat&color=d42f2d)](https://github.com/sponsors/ricky0123)
 
-请为项目提供资金支持，尤其是在你的商业产品依赖此包的情况下。[![Become a Sponsor](https://img.shields.io/static/v1?label=Become%20a%20Sponsor&message=%E2%9D%A4&logo=GitHub&style=flat&color=d42f2d)](https://github.com/sponsors/ricky0123)
+## Important update about node support - Oct 2024 📢
 
-<a id="-support"></a>
+我将逐步停用 `ricky0123/vad-node`（用于服务端 Node 场景的语音活动检测包）。从现在开始，我不再计划继续发布 node 包更新。我做出该决定的原因如下：
+
+- 这个项目最初的目标是客户端语音活动检测。最初我因为有人提出需求才加上了 node 支持，也希望能帮到更多人，但我的投入时间有限，停用 `ricky0123/vad-node` 能让我把更多时间用于 `ricky0123/vad-web`。
+- 相比学习 onnxruntime-web、audio worklet 等前端技术并自己实现一个客户端方案，很多开发者更容易自行构建服务端语音活动检测方案。因此我认为 `ricky0123/vad-web` 对社区更有价值。
+- 浏览器包和 node 包之间在模型运行与调用方式上有环境差异，代码共享并不顺畅。
+- 根据[调研问卷](https://uaux2a2ppfv.typeform.com/to/iJG2gCQv)，大多数用户在使用 `ricky0123/vad-web`（可能搭配 `ricky0123/vad-react`）。
+
+## Roadmap 🛣️
+
+当前方向（基于仓库现状和维护者说明）：
+
+- 继续聚焦浏览器优先 API（`@ricky0123/vad-web`、`@ricky0123/vad-react`）
+- 维护并完善面向打包器和框架的文档与示例
+- 提升贡献者/开发者文档与 test-site 工作流
+- 补充并维护 `i18n/` 下的多语言 README
+
+## Contributing 🤝
+
+- 阅读开发指南：[docs.vad.ricky0123.com/developer-guide/hacking](https://docs.vad.ricky0123.com/developer-guide/hacking/)
+- 在仓库提交 Issue 或 PR：[github.com/ricky0123/vad/issues](https://github.com/ricky0123/vad/issues)
+- 想快速理解项目上下文，请查看 [`HACKING.md`](HACKING.md)
+
+## References 📚
+
+1. Silero VAD 仓库：[github.com/snakers4/silero-vad](https://github.com/snakers4/silero-vad)
 
 ## ❤️ Support
 
 | Donate | PayPal | Stripe |
-|---|---|---|
-| [![Donate](https://img.shields.io/badge/Donate-LazyingArt-0EA5E9?style=for-the-badge&logo=ko-fi&logoColor=white)](https://chat.lazying.art/donate) | [![PayPal](https://img.shields.io/badge/PayPal-RongzhouChen-00457C?style=for-the-badge&logo=paypal&logoColor=white)](https://paypal.me/RongzhouChen) | [![Stripe](https://img.shields.io/badge/Stripe-Donate-635BFF?style=for-the-badge&logo=stripe&logoColor=white)](https://buy.stripe.com/aFadR8gIaflgfQV6T4fw400) |
+| --- | --- | --- |
+| [![Donate](https://camo.githubusercontent.com/24a4914f0b42c6f435f9e101621f1e52535b02c225764b2f6cc99416926004b7/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f446f6e6174652d4c617a79696e674172742d3045413545393f7374796c653d666f722d7468652d6261646765266c6f676f3d6b6f2d6669266c6f676f436f6c6f723d7768697465)](https://chat.lazying.art/donate) | [![PayPal](https://camo.githubusercontent.com/d0f57e8b016517a4b06961b24d0ca87d62fdba16e18bbdb6aba28e978dc0ea21/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f50617950616c2d526f6e677a686f754368656e2d3030343537433f7374796c653d666f722d7468652d6261646765266c6f676f3d70617970616c266c6f676f436f6c6f723d7768697465)](https://paypal.me/RongzhouChen) | [![Stripe](https://camo.githubusercontent.com/1152dfe04b6943afe3a8d2953676749603fb9f95e24088c92c97a01a897b4942/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f5374726970652d446f6e6174652d3633354246463f7374796c653d666f722d7468652d6261646765266c6f676f3d737472697065266c6f676f436f6c6f723d7768697465)](https://buy.stripe.com/aFadR8gIaflgfQV6T4fw400) |
 
-<a id="important-update-about-node-support---oct-2024-"></a>
+## License 📄
 
-## 关于 Node 支持的重要更新 - 2024 年 10 月 📢
-
-我将逐步停止对 `ricky0123/vad-node`（面向服务端 Node 环境的语音活动检测包）的支持。后续我不计划再发布该 Node 包的更新。我做出这个决定的原因如下：
-
-- 这个项目最初的使用场景是客户端语音活动检测。我后来添加 Node 支持，是因为有人提出需求，我也想提供帮助。然而我能投入在这个项目上的时间有限，弃用 `ricky0123/vad-node` 能让我把更多精力投入到 `ricky0123/vad-web`。
-- 与其让开发者学习 onnxruntime-web、audio worklets 等技术来构建客户端方案，个人开发者通常更容易按需实现定制的服务端语音活动检测方案。因此我认为 `ricky0123/vad-web` 能为社区提供更高价值。
-- 由于浏览器与 Node 环境在运行和使用语音活动检测模型时存在关键差异，在两个包之间共享代码相当别扭。
-- 根据[问卷](https://uaux2a2ppfv.typeform.com/to/iJG2gCQv)结果，大多数用户都在使用 `ricky0123/vad-web`（可能同时使用 `ricky0123/vad-react`）。
-
-<a id="roadmap-"></a>
-
-## 路线图 🛣️
-
-当前方向（基于仓库状态和上方维护者说明）：
-
-- 继续聚焦浏览器优先 API（`@ricky0123/vad-web`、`@ricky0123/vad-react`）
-- 持续维护并改进面向 bundler 与框架的文档/示例
-- 改进贡献者/开发者文档与 test-site 工作流
-- 在 `i18n/` 下新增并维护翻译版 README
-
-<a id="contributing-"></a>
-
-## 贡献 🤝
-
-- 阅读 hacking 指南：[docs.vad.ricky0123.com/developer-guide/hacking](https://docs.vad.ricky0123.com/developer-guide/hacking/)
-- 在本仓库提交 issue 或 PR：[github.com/ricky0123/vad/issues](https://github.com/ricky0123/vad/issues)
-- 如需快速了解项目上下文，请查看 [`HACKING.md`](HACKING.md)
-
-<a id="references-"></a>
-
-## 参考资料 📚
-
-1. Silero VAD 仓库：[github.com/snakers4/silero-vad](https://github.com/snakers4/silero-vad)
-
-<a id="license-"></a>
-
-## 许可证 📄
-
-- 项目许可证：ISC（见 [LICENSE](LICENSE)）
+- 项目许可：ISC（见 [LICENSE](LICENSE)）
