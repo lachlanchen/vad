@@ -1,57 +1,68 @@
 [English](../README.md) · [العربية](README.ar.md) · [Español](README.es.md) · [Français](README.fr.md) · [日本語](README.ja.md) · [한국어](README.ko.md) · [Tiếng Việt](README.vi.md) · [中文 (简体)](README.zh-Hans.md) · [中文（繁體）](README.zh-Hant.md) · [Deutsch](README.de.md) · [Русский](README.ru.md)
 
 
-# Voice Activity Detection für Javascript
+[![LazyingArt banner](https://github.com/lachlanchen/lachlanchen/raw/main/figs/banner.png)](https://github.com/lachlanchen/lachlanchen/blob/main/figs/banner.png)
+
+# 🎙️ Spracherkennung im Browser für JavaScript
 
 [![npm vad-web](https://img.shields.io/npm/v/@ricky0123/vad-web?color=0b69d7&label=%40ricky0123%2Fvad-web&style=flat-square)](https://www.npmjs.com/package/@ricky0123/vad-web)
 [![npm vad-react](https://img.shields.io/npm/v/@ricky0123/vad-react?color=0b69d7&label=%40ricky0123%2Fvad-react&style=flat-square)](https://www.npmjs.com/package/@ricky0123/vad-react)
 [![Docs](https://img.shields.io/badge/docs-vad.ricky0123.com-0a7f5a?style=flat-square)](https://docs.vad.ricky0123.com/)
 [![Demo](https://img.shields.io/badge/demo-live-ff8c00?style=flat-square)](https://www.vad.ricky0123.com)
+[![Monorepo](https://img.shields.io/badge/repo-monorepo-111827?style=flat-square)](https://github.com/ricky0123/vad)
 [![Discord](https://img.shields.io/badge/discord-community-5865F2?style=flat-square&logo=discord&logoColor=white)](https://discord.gg/4WPeGEaSpF)
 [![License: ISC](https://img.shields.io/badge/license-ISC-2ea44f?style=flat-square)](LICENSE)
 
-> Führe Callbacks für Audiobereiche mit gesprochener Sprache in wenigen Codezeilen aus.
+> Führe Callbacks auf Sprachsegmenten mit Benutzersprache mit nur wenigen Zeilen aus.
 
-Dieses Paket hat das Ziel, einen präzisen und benutzerfreundlichen Voice Activity Detector (VAD) bereitzustellen, der im Browser läuft. Mit diesem Paket kannst du den Nutzer nach Mikrofonberechtigungen fragen, Audioaufnahmen starten, Audiobereiche mit Sprache zur Verarbeitung an deinen Server senden oder eine bestimmte Animation bzw. einen Indikator anzeigen, wenn der Nutzer spricht. Beachte, dass ich mich entschieden habe, [die Node-Unterstützung einzustellen](#wichtiges-update-zur-node-unterstützung---okt-2024-), um mich auf den Browser-Anwendungsfall zu konzentrieren.
+Dieses Paket soll einen präzisen und benutzerfreundlichen Voice-Activity-Detector (VAD) bereitstellen, der im Browser läuft. Mit diesem Paket können Sie den Nutzer um Mikrofonberechtigungen bitten, mit der Audioaufnahme starten, Sprachsegmente mit Sprache an Ihren Server zur Verarbeitung senden oder eine bestimmte Animation oder Anzeige anzeigen, wenn der Nutzer spricht. Beachten Sie, dass ich mich entschieden habe, [die Node-Unterstützung zu beenden](#wichtige-aktualisierung-zum-node-support---okt-2024-) und mich auf die Browser-Nutzung zu konzentrieren.
+
+| Auf einen Blick | Details |
+| --- | --- |
+| Kernpakete | `@ricky0123/vad-web`, `@ricky0123/vad-react` |
+| Primäre Laufzeit | Browser (`WebAudio` + `getUserMedia`) |
+| Dokumentation | [docs.vad.ricky0123.com](https://docs.vad.ricky0123.com/) |
+| Live-Demo | [vad.ricky0123.com](https://www.vad.ricky0123.com) |
 
 ## Inhaltsverzeichnis
 
-- [Schnellzugriffe 🔗](#schnellzugriffe-)
-- [Überblick 🧭](#überblick-)
+- [Schnellzugriff 🔗](#schnellzugriff-)
+- [Überblick 🧭](#uberblick-)
 - [Funktionen ✨](#funktionen-)
 - [Projektstruktur 🗂️](#projektstruktur-)
-- [Kompatibilitätsmatrix 🧩](#kompatibilitätsmatrix-)
+- [Kompatibilitätsmatrix 🧩](#kompatibilitatsmatrix-)
 - [Voraussetzungen ✅](#voraussetzungen-)
 - [Installation 📦](#installation-)
 - [Verwendung 🚀](#verwendung-)
 - [Konfiguration ⚙️](#konfiguration-)
 - [Beispiele 🧪](#beispiele-)
-- [Entwicklungshinweise 🛠️](#entwicklungshinweise-)
-- [CI & Quality Gates 🧱](#ci--quality-gates-)
+- [Entwicklungsnotizen 🛠️](#entwicklungsnotizen-)
+- [CI & Qualitätskontrollen 🧱](#ci--qualitatskontrollen-)
 - [Fehlerbehebung 🩺](#fehlerbehebung-)
 - [Sponsoring ❤️](#sponsoring-)
-- [Wichtiges Update zur Node-Unterstützung - Okt 2024 📢](#wichtiges-update-zur-node-unterstützung---okt-2024-)
+- [❤️ Support](#-support)
+- [Wichtige Aktualisierung zum Node-Support - Okt 2024 📢](#wichtige-aktualisierung-zum-node-support---okt-2024-)
 - [Roadmap 🛣️](#roadmap-)
-- [Beitragen 🤝](#beitragen-)
+- [Mitwirkung 🤝](#mitwirkung-)
 - [Referenzen 📚](#referenzen-)
 - [Lizenz 📄](#lizenz-)
 
-## Schnellzugriffe 🔗
+## Schnellzugriff 🔗
 
 | Ressource | Link |
 | --- | --- |
 | Live-Demo | [vad.ricky0123.com](https://www.vad.ricky0123.com) |
 | Dokumentation | [docs.vad.ricky0123.com](https://docs.vad.ricky0123.com/) |
-| Discord | [Community beitreten](https://discord.gg/4WPeGEaSpF) |
-| Umfrage | [Teile deinen Anwendungsfall](https://uaux2a2ppfv.typeform.com/to/iJG2gCQv) |
-| Leitfaden zum Beitragen | [Developer-Hacking-Guide](https://docs.vad.ricky0123.com/developer-guide/hacking/) |
+| Discord | [Gemeinschaft beitreten](https://discord.gg/4WPeGEaSpF) |
+| Umfrage | [Nutzen Sie Ihren Fall ausfüllen](https://uaux2a2ppfv.typeform.com/to/iJG2gCQv) |
+| Beitragsleitfaden | [Entwickler-Hacking-Leitfaden](https://docs.vad.ricky0123.com/developer-guide/hacking/) |
 
-- Durchsuche die Dokumentation, deren Quellcode sich im Verzeichnis `./docs` befindet.
-- Wenn du beitragen möchtest, habe ich [hier](https://docs.vad.ricky0123.com/developer-guide/hacking/) begonnen, eine Dokumentation zum Einstieg in die Entwicklung an diesen Paketen zu schreiben. Wenn du Fragen hast, kannst du hier ein Issue eröffnen oder eine Nachricht auf Discord hinterlassen.
+- Die Dokumentationsquelle liegt in `./docs`.
+- Das Einarbeiten von Beitragenden beginnt hier: [Entwickler-Hacking-Leitfaden](https://docs.vad.ricky0123.com/developer-guide/hacking/). Fragen sind willkommen über Issues oder Discord.
 
-Unter der Haube führen diese Pakete [Silero VAD](https://github.com/snakers4/silero-vad) [[1]](#referenzen) über [ONNX Runtime Web](https://github.com/microsoft/onnxruntime/tree/main/js/web) / [ONNX Runtime Node.js](https://github.com/microsoft/onnxruntime/tree/main/js/node) aus. Vielen Dank an alle Beteiligten, die das möglich machen.
+Im Hintergrund verwenden diese Pakete [Silero VAD](https://github.com/snakers4/silero-vad) [[1]](#referenzen) mit [ONNX Runtime Web](https://github.com/microsoft/onnxruntime/tree/main/js/web) (mit historischen Verweisen auf ONNX Runtime Node.js aus der früheren Node-Unterstützung). Vielen Dank an alle, die dies möglich gemacht haben.
 
-Hinweis zum i18n-Status: `i18n/` existiert und enthält mehrere übersetzte README-Dateien. Der Sprachselektor oben enthält außerdem Links für geplante/Platzhalter-Übersetzungen (`README.de.md`, `README.ru.md`), die in diesem Repository-Snapshot möglicherweise nicht vorhanden sind.
+Hinweis zum i18n-Status: `i18n/` enthält übersetzte README-Dateien für die Spracheinträge, die oben verlinkt sind.
 
 ## Überblick 🧭
 
@@ -59,25 +70,25 @@ Dieses Repository ist ein Monorepo mit zwei primären veröffentlichten Paketen:
 
 | Paket | Zweck |
 | --- | --- |
-| `@ricky0123/vad-web` | Browser-APIs einschließlich `MicVAD`, `AudioNodeVAD` und `NonRealTimeVAD` |
-| `@ricky0123/vad-react` | React-Hook-Wrapper (`useMicVAD`) für `vad-web` |
+| `@ricky0123/vad-web` | Browser-APIs inkl. `MicVAD`, `AudioNodeVAD` und `NonRealTimeVAD` |
+| `@ricky0123/vad-react` | React-Hook-Wraper (`useMicVAD`) für `vad-web` |
 
-Das Projekt ist browser-first und umfasst:
+Das Projekt ist browser-first konzipiert und umfasst:
 
-- Echtzeit-Callbacks für Mikrofonsegmentierung (`onSpeechStart`, `onSpeechEnd`, `onVADMisfire` usw.)
-- Konfigurierbare Algorithmus-Schwellenwerte und Timing-Steuerungen
-- Unterstützung für Legacy- und v5-Silero-Modelle
-- Demo-/Test-Apps und Quellen der Dokumentationsseite in diesem Repository
+- Echtzeit-Mikrofon-Segmentierungs-Callbacks (`onSpeechStart`, `onSpeechEnd`, `onVADMisfire`, usw.)
+- Konfigurierbare Algorithmusschwellen und Zeitsteuerung
+- Unterstützung für legacy- und v5-Silero-Modelle
+- Demo-/Test-Apps und Quellen der Docs-Website in diesem Repository
 
 ## Funktionen ✨
 
-- Browser-first-VAD-Pipeline auf Basis von Silero-ONNX-Modellen
+- Browser-first VAD-Pipeline auf Basis von Silero ONNX-Modellen
 - Funktioniert mit Script-Tags, Bundlern und React
-- Sinnvolle Standard-Stream-Constraints für das Mikrofon
-- Überschreibbarer Stream-Lebenszyklus (`getStream`, `pauseStream`, `resumeStream`)
-- Nicht-Echtzeit-Sprachsegmentierung für voraufgezeichnetes Audio über `NonRealTimeVAD`
-- Konfigurierbares Laden von Modell/Assets über `baseAssetPath` und `onnxWASMBasePath`
-- Unterstützt sowohl Legacy- als auch v5-Modellzustandsverwaltung über integrierte Wrapper
+- Sinnvolle Standard-Constraints für den Mikrofon-Stream
+- Anpassbarer Stream-Lifecycle (`getStream`, `pauseStream`, `resumeStream`)
+- Nicht-Echtzeit-Sprachsegmentierung für voraufgenommenes Audio über `NonRealTimeVAD`
+- Konfigurierbares Modell-/Asset-Laden über `baseAssetPath` und `onnxWASMBasePath`
+- Unterstützt legacy- und v5-Modellzustände über eingebaute Wrapper
 - Enthält Beispiele für Script-Tags, webpack-basierte Bundler, React-Bundler und Next.js
 
 ## Projektstruktur 🗂️
@@ -85,43 +96,46 @@ Das Projekt ist browser-first und umfasst:
 ```text
 .
 ├── README.md
-├── docs/                     # MkDocs-Quellen für docs.vad.ricky0123.com
-├── examples/                 # script-tag-, bundler-, react-bundler-, nextjs-Beispiele
+├── docs/                     # MkDocs source for docs.vad.ricky0123.com
+├── examples/                 # script-tag, bundler, react-bundler, nextjs examples
 ├── packages/
 │   ├── web/                  # @ricky0123/vad-web
 │   └── react/                # @ricky0123/vad-react
-├── scripts/                  # Entwicklungs-Helfer
-├── test-site/                # lokaler interaktiver Playground
-├── i18n/                     # übersetzte README-Dateien
+├── scripts/                  # dev helpers
+├── test-site/                # local interactive playground
+├── i18n/                     # translated README files
 ├── silero_vad_legacy.onnx
 └── silero_vad_v5.onnx
 ```
 
-Detailliertere Pfade:
+Ausführlichere Pfade:
 
-- `packages/web/src/real-time-vad.ts`: Echtzeit-Orchestrierung für Mikrofon/Audio-Node-VAD
-- `packages/web/src/non-real-time-vad.ts`: asynchrone Segmentierung für voraufgezeichnetes Audio
-- `packages/web/src/frame-processor.ts`: Schwellwertlogik und Logik für Sprachsegmentgrenzen
-- `packages/react/src/index.ts`: Lebenszyklus- und Zustands-Wrapper des React-Hooks `useMicVAD`
+- `packages/web/src/real-time-vad.ts`: Echtzeit-Mikrofon/Audio-Node VAD-Orchestrierung
+- `packages/web/src/non-real-time-vad.ts`: Asynchrone Segmentierung für voraufgenommenes Audio
+- `packages/web/src/frame-processor.ts`: Schwellenwertsetzung und Ermittlung von Sprachsegmentgrenzen
+- `packages/react/src/index.ts`: Lebenszyklus von `useMicVAD` und Zustandswrapper in React
 
-## Kompatibilitätsmatrix 🧩
+## Kompatibilitatsmatrix 🧩
 
 | Komponente | Umgebung |
 | --- | --- |
 | `@ricky0123/vad-web` | Moderne Browser mit WebAudio + `MediaDevices.getUserMedia` |
 | `@ricky0123/vad-react` | React-Apps (`react` / `react-dom` >= 16.8.0) |
-| Docs-Toolchain | Python 3.10 + Poetry (laut CI-Workflow) |
-| CI-Node-Runtime | Node 18 (laut Repository-Workflows) |
+| Docs-Toolchain | Python 3.10 + Poetry (gemäß CI-Workflow) |
+| CI Node-Laufzeit | Node 18 (gemäß Repository-Workflows) |
 
-Annahme-Hinweis: Beispiele und Dokumentation sind konsistent mit den aktuellen Paketversionen in diesem Repository-Snapshot (`@ricky0123/vad-web@0.0.27`, `@ricky0123/vad-react@0.0.33`).
+Paketversionen zum Repository-Snapshot (`packages/*/package.json`):
+
+- `@ricky0123/vad-web@0.0.27`
+- `@ricky0123/vad-react@0.0.33`
 
 ## Voraussetzungen ✅
 
 - Browser-Nutzung: ein moderner Browser mit `MediaDevices.getUserMedia`
-- Lokale Entwicklung: Node.js + npm-Workspaces
-- Entwicklung der Dokumentation: Python + Poetry (für MkDocs-Build)
+- Lokale Entwicklung: Node.js + npm workspaces
+- Dokumentationsentwicklung: Python + Poetry (für MkDocs-Build)
 
-Empfohlene lokale Basis laut CI-Konfiguration:
+Empfohlene lokale Basis basierend auf der CI-Konfiguration:
 
 - Node.js 18.x
 - Python 3.10.x
@@ -140,7 +154,7 @@ Installiere den React-Wrapper:
 npm i @ricky0123/vad-react
 ```
 
-Installiere Monorepo-Abhängigkeiten (für Mitwirkende):
+Installiere Monorepo-Abhängigkeiten (für Beitragende):
 
 ```bash
 npm install
@@ -150,7 +164,7 @@ npm install
 
 ### Schnellstart (Script-Tags)
 
-Um den VAD im Browser über ein Script-Tag zu verwenden, füge die folgenden Script-Tags ein:
+Um VAD im Browser per Script-Tag zu verwenden, binde die folgenden Script-Tags ein:
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web@1.22.0/dist/ort.js"></script>
@@ -216,15 +230,15 @@ for await (const { audio, start, end } of myvad.run(audioData, sampleRate)) {
 
 ## Konfiguration ⚙️
 
-Häufige Optionen über die APIs hinweg sind:
+Gemeinsame Optionen über APIs hinweg beinhalten:
 
-- `positiveSpeechThreshold` (Standard in Echtzeit-APIs ungefähr `0.3`)
-- `negativeSpeechThreshold` (Standard in Echtzeit-APIs ungefähr `0.25`)
-- `redemptionMs` (Standard in Echtzeit-APIs ungefähr `1400`)
-- `preSpeechPadMs` (Standard in Echtzeit-APIs ungefähr `800`)
-- `minSpeechMs` (Standard in Echtzeit-APIs ungefähr `400`)
+- `positiveSpeechThreshold` (Standardwert ca. `0.3` in Echtzeit-APIs)
+- `negativeSpeechThreshold` (Standardwert ca. `0.25` in Echtzeit-APIs)
+- `redemptionMs` (Standardwert ca. `1400` in Echtzeit-APIs)
+- `preSpeechPadMs` (Standardwert ca. `800` in Echtzeit-APIs)
+- `minSpeechMs` (Standardwert ca. `400` in Echtzeit-APIs)
 
-Echtzeit-APIs (`MicVAD`, `useMicVAD`) unterstützen außerdem:
+Echtzeit-APIs (`MicVAD`, `useMicVAD`) unterstützen zusätzlich:
 
 - `getStream`, `pauseStream`, `resumeStream`
 - `onFrameProcessed`, `onSpeechStart`, `onSpeechRealStart`, `onSpeechEnd`, `onVADMisfire`
@@ -233,17 +247,17 @@ Echtzeit-APIs (`MicVAD`, `useMicVAD`) unterstützen außerdem:
 - `baseAssetPath` und `onnxWASMBasePath`
 - `workletOptions`
 
-Vollständige API-Tabellen findest du in der Dokumentation: [API reference](https://docs.vad.ricky0123.com/user-guide/api/) und [algorithm guide](https://docs.vad.ricky0123.com/user-guide/algorithm/).
+Siehe vollständige API-Tabellen in der Doku: [API-Referenz](https://docs.vad.ricky0123.com/user-guide/api/) und [Algorithmus-Guide](https://docs.vad.ricky0123.com/user-guide/algorithm/).
 
-### Konfigurationsrezept: Modell- und Runtime-Assets selbst hosten
+### Konfigurationsanleitung: Modell- und Laufzeit-Assets selbst hosten
 
-Wenn du keine CDN-Standards verwendest, stelle sicher, dass deine App Folgendes bereitstellt:
+Wenn keine CDN-Standardwerte verwendet werden, stellen Sie sicher, dass Ihre App Folgendes bereitstellt:
 
 - `silero_vad_legacy.onnx` und/oder `silero_vad_v5.onnx`
 - `vad.worklet.bundle.min.js`
-- `onnxruntime-web`-Runtime-Dateien (`.wasm`; und `.mjs` für neuere Runtime-Builds)
+- `onnxruntime-web`-Laufzeitdateien (`.wasm`; und `.mjs` für neuere Runtime-Builds)
 
-Dann konfiguriere:
+Dann konfigurieren Sie:
 
 ```ts
 const vad = await MicVAD.new({
@@ -257,9 +271,9 @@ const vad = await MicVAD.new({
 
 ## Beispiele 🧪
 
-Beispiele im Repository:
+Repository-Beispiele:
 
-- `examples/script-tags`: grundlegendes Script-Tag-Setup
+- `examples/script-tags`: einfache Script-Tag-Einrichtung
 - `examples/bundler`: webpack + `@ricky0123/vad-web`
 - `examples/react-bundler`: webpack + `@ricky0123/vad-react`
 - `examples/nextjs`: Next.js-Integrationsbeispiel
@@ -270,9 +284,9 @@ Beispielbefehl aus `examples/bundler`:
 npm run build && npm run start
 ```
 
-Dokumentation zum Bundling des Voice Activity Detectors für den Browser oder zur Verwendung in Node- oder React-Projekten findest du auf [vad.ricky0123.com](https://www.vad.ricky0123.com).
+Dokumentation zum Bundling des Sprachaktivitätserkennungsmoduls für den Browser oder zur Verwendung in Node- oder React-Projekten finden Sie auf [vad.ricky0123.com](https://www.vad.ricky0123.com).
 
-## Entwicklungshinweise 🛠️
+## Entwicklungsnotizen 🛠️
 
 Root-Workspace-Skripte:
 
@@ -292,75 +306,81 @@ Was sie tun:
 - `npm run test:coverage`: Coverage für `packages/web`
 - `npm run typecheck`: prüft TypeScript in Paketen, test-site und Tests
 - `npm run format-check`: prüft Formatierung für TS/TSX unter `packages`, `examples`, `test-site`
-- `npm run dev`: beobachtet Package- und test-site-Quellen, baut neu und stellt `test-site/dist` bereit
+- `npm run dev`: beobachtet Package- und test-site-Quellen, baut neu und dient `test-site/dist`
 
-Docs-Build (MkDocs + Poetry):
+Dokumentations-Build (MkDocs + Poetry):
 
 ```bash
 poetry install
 poetry run mkdocs serve
 ```
 
-Zusätzliche Hinweise:
+Weitere Hinweise:
 
-- `./test-site/build.sh` kopiert benötigte VAD-/ONNX-Runtime-Assets nach `test-site/dist` und `test-site/dist/subpath`
-- `./scripts/dev.sh` verwendet `nodemon` + `live-server` für lokale Rebuild-und-Serve-Schleifen auf Port `8080`
-- `./check_vad_up_to_date.sh` ist historisch und referenziert `silero_vad.onnx` (während dieses Repo `silero_vad_legacy.onnx` und `silero_vad_v5.onnx` ausliefert)
+- `./test-site/build.sh` kopiert erforderliche VAD/ONNX Runtime-Assets nach `test-site/dist` und `test-site/dist/subpath`
+- `./scripts/dev.sh` nutzt `nodemon` + `live-server` für lokale Rebuild-and-serve-Schleifen auf Port `8080`
+- `./check_vad_up_to_date.sh` ist historisch und verweist auf `silero_vad.onnx` (während dieses Repo `silero_vad_legacy.onnx` und `silero_vad_v5.onnx` liefert)
 
-## CI & Quality Gates 🧱
+## CI & Qualitätskontrollen 🧱
 
-GitHub-Workflows unter `.github/workflows/` decken ab:
+Die GitHub-Workflows in `.github/workflows/` umfassen:
 
 - Test (`test.yml`)
 - Typecheck (`typecheck.yml`)
-- Formatting (`format-check.yml`)
-- Docs-Build/Deployment (`docs.yml`)
+- Formatierung (`format-check.yml`)
+- Docs Build/Deployment (`docs.yml`)
 - Publish-Flow (`publish.yml`)
 
-Diese Workflows sind eine praktische Quelle der Wahrheit für erwartete Runtime-/Tool-Versionen und Release-Checks.
+Diese Workflows sind eine praktische Wahrheit über die erwarteten Laufzeit-/Tool-Versionen und Release-Prüfungen.
 
 ## Fehlerbehebung 🩺
 
-| Symptom | Prüfen / Beheben |
+| Symptom | Prüfung / Korrektur |
 | --- | --- |
-| Mikrofonberechtigung verweigert | Stelle sicher, dass der Browser Mikrofonzugriff für deinen Origin hat. |
-| Assets laden nicht (`.onnx`, `.wasm`, `.mjs`, worklet) | Setze `baseAssetPath` / `onnxWASMBasePath` korrekt und prüfe, ob die Dateien tatsächlich bereitgestellt werden. |
-| Probleme mit neuerer `onnxruntime-web`-Runtime | Stelle zusätzlich `.mjs`-Dateien bereit, nicht nur `.wasm`. |
-| Lokale Entwicklung über unsicheren Origin | Browser-Mikrofon-APIs erfordern typischerweise sichere Kontexte (`https` oder `localhost`). |
-| Bundler-Probleme zur Build-Zeit | Nutze die Bundling-Hinweise in den [browser docs](https://docs.vad.ricky0123.com/user-guide/browser/). |
-| Probleme bei der Next.js-Integration | Verwende Konfigurationsmuster aus [`examples/nextjs/next.config.js`](examples/nextjs/next.config.js) und prüfe die Hosting-Pfade statischer Assets. |
+| Mikrofonberechtigung verweigert | Stellen Sie sicher, dass der Browser Berechtigungen für das Mikrofon Ihrer Origin hat. |
+| Assets laden nicht (`.onnx`, `.wasm`, `.mjs`, Worklet) | Setzen Sie `baseAssetPath` / `onnxWASMBasePath` korrekt und verifizieren Sie, dass Dateien tatsächlich ausgeliefert werden. |
+| Neuere `onnxruntime-web`-Runtime-Probleme | Stellen Sie auch `.mjs`-Dateien bereit, nicht nur `.wasm`. |
+| Lokale Entwicklung über unsichere Origin | Browser-Mikrofon-APIs benötigen typischerweise sichere Kontexte (`https` oder `localhost`). |
+| Build-Bundling-Probleme | Nutzen Sie die Bundling-Anleitung in der [Browser-Dokumentation](https://docs.vad.ricky0123.com/user-guide/browser/). |
+| Next.js-Integrationsprobleme | Verwenden Sie Konfigurationsmuster aus [`examples/nextjs/next.config.js`](examples/nextjs/next.config.js) und überprüfen Sie statische Asset-Hosting-Pfade. |
 
 ## Sponsoring ❤️
 
-Bitte unterstütze das Projekt finanziell, insbesondere wenn dein kommerzielles Produkt von diesem Paket abhängt. [![Become a Sponsor](https://img.shields.io/static/v1?label=Become%20a%20Sponsor&message=%E2%9D%A4&logo=GitHub&style=flat&color=d42f2d)](https://github.com/sponsors/ricky0123)
+Bitte unterstützen Sie das Projekt finanziell – besonders wenn Ihr kommerzielles Produkt auf diesem Paket basiert. [![Become a Sponsor](https://img.shields.io/static/v1?label=Become%20a%20Sponsor&message=%E2%9D%A4&logo=GitHub&style=flat&color=d42f2d)](https://github.com/sponsors/ricky0123)
 
-## Wichtiges Update zur Node-Unterstützung - Okt 2024 📢
+## ❤️ Support
 
-Ich werde die Unterstützung für `ricky0123/vad-node`, das Voice-Activity-Detection-Paket für serverseitige Node-Umgebungen, auslaufen lassen. Ich plane, ab jetzt keine Updates mehr für das Node-Paket zu veröffentlichen. Ich habe diese Entscheidung aus folgenden Gründen getroffen:
+| Donate | PayPal | Stripe |
+|---|---|---|
+| [![Donate](https://img.shields.io/badge/Donate-LazyingArt-0EA5E9?style=for-the-badge&logo=ko-fi&logoColor=white)](https://chat.lazyingart/donate) | [![PayPal](https://img.shields.io/badge/PayPal-RongzhouChen-00457C?style=for-the-badge&logo=paypal&logoColor=white)](https://paypal.me/RongzhouChen) | [![Stripe](https://img.shields.io/badge/Stripe-Donate-635BFF?style=for-the-badge&logo=stripe&logoColor=white)](https://buy.stripe.com/aFadR8gIaflgfQV6T4fw400) |
 
-- Mein ursprünglicher Anwendungsfall für dieses Projekt war clientseitige Voice Activity Detection. Ich habe Node-Unterstützung hinzugefügt, weil jemand darum gebeten hat und ich helfen wollte. Ich habe jedoch nicht viel Zeit, an diesem Projekt zu arbeiten, und die Abkündigung von `ricky0123/vad-node` gibt mir mehr Zeit, mich auf `ricky0123/vad-web` zu konzentrieren.
-- Für einzelne Entwickler ist es deutlich einfacher, maßgeschneiderte serverseitige Voice-Activity-Detection-Lösungen zu erstellen, als zu lernen, wie man mit onnxruntime-web, Audio-Worklets und anderen Technologien eine clientseitige Lösung umsetzt. Deshalb sehe ich in `ricky0123/vad-web` einen größeren Mehrwert für die Community.
-- Das Teilen von Code zwischen Browser- und Node-Paketen ist eher umständlich, weil sich die Umgebungen in für den Betrieb und die Verwendung des Voice-Activity-Detection-Modells relevanten Punkten unterscheiden.
-- Laut der [Umfrage](https://uaux2a2ppfv.typeform.com/to/iJG2gCQv) nutzen die meisten Anwender `ricky0123/vad-web` (möglicherweise zusammen mit `ricky0123/vad-react`).
+## Wichtige Aktualisierung zum Node-Support - Okt 2024 📢
+
+Ich werde den Support für `ricky0123/vad-node`, das Paket für Sprachaktivitätserkennung in serverseitigen Node-Umgebungen, einstellen. Ich plane nicht, künftig Aktualisierungen für das Node-Paket zu veröffentlichen. Ich habe diese Entscheidung aus diesen Gründen getroffen:
+
+- Mein ursprünglicher Anwendungsfall für dieses Projekt war die Sprachaktivitätserkennung auf der Client-Seite. Ich habe Node-Unterstützung hinzugefügt, weil jemand dies angefragt hatte und ich helfen wollte. Ich habe jedoch nicht viel Zeit mehr für dieses Projekt, und die Einstellung von `ricky0123/vad-node` gibt mir mehr Zeit, mich auf `ricky0123/vad-web` zu konzentrieren.
+- Es ist deutlich einfacher für einzelne Entwickler, eigene serverseitige Sprachaktivitätserkennungs-Lösungen zu erstellen, als für Entwickler zu lernen, wie man mit onnxruntime-web, Audio Worklets und anderen Technologien eine clientseitige Lösung aufbaut. Deshalb sehe ich `ricky0123/vad-web` als wertvoller für die Gemeinschaft an.
+- Das Teilen von Code zwischen Browser- und Node-Paketen ist ziemlich umständlich, da die Umgebungen in für den Betrieb und Einsatz des Sprachaktivitätsmodells relevanten Punkten unterschiedlich sind.
+- Laut [Umfrage](https://uaux2a2ppfv.typeform.com/to/iJG2gCQv) nutzen die meisten Nutzer `ricky0123/vad-web` (möglicherweise mit `ricky0123/vad-react`).
 
 ## Roadmap 🛣️
 
-Aktuelle Richtung (basierend auf dem Repository-Status und dem Maintainer-Hinweis oben):
+Aktuelle Richtung (basierend auf dem aktuellen Repository-Zustand und dem Wartungshinweis oben):
 
-- Weiterer Fokus auf browser-first-APIs (`@ricky0123/vad-web`, `@ricky0123/vad-react`)
-- Pflege und Verbesserung der Dokumentation/Beispiele für Bundler und Frameworks
-- Verbesserung der Mitwirkenden-/Entwicklerdokumentation und der test-site-Workflows
+- Weiterhin Fokus auf browser-first APIs (`@ricky0123/vad-web`, `@ricky0123/vad-react`)
+- Pflege und Verbesserung von Docs/Beispielen für Bundler und Frameworks
+- Verbesserung der Beitragenden-/Entwicklerdokumentation und test-site Workflows
 - Hinzufügen und Pflegen übersetzter READMEs unter `i18n/`
 
-## Beitragen 🤝
+## Mitwirkung 🤝
 
-- Lies den Hacking-Guide: [docs.vad.ricky0123.com/developer-guide/hacking](https://docs.vad.ricky0123.com/developer-guide/hacking/)
-- Eröffne Issues oder PRs in diesem Repository: [github.com/ricky0123/vad/issues](https://github.com/ricky0123/vad/issues)
-- Für schnellen Projektkontext siehe [`HACKING.md`](HACKING.md)
+- Lesen Sie den Hacking-Leitfaden: [docs.vad.ricky0123.com/developer-guide/hacking](https://docs.vad.ricky0123.com/developer-guide/hacking/)
+- Öffnen Sie Issues oder PRs in diesem Repository: [github.com/ricky0123/vad/issues](https://github.com/ricky0123/vad/issues)
+- Für schnellen Projekthintergrund siehe [`HACKING.md`](HACKING.md)
 
 ## Referenzen 📚
 
-1. Silero-VAD-Repository: [github.com/snakers4/silero-vad](https://github.com/snakers4/silero-vad)
+1. Silero VAD Repository: [github.com/snakers4/silero-vad](https://github.com/snakers4/silero-vad)
 
 ## Lizenz 📄
 

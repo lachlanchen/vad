@@ -1,6 +1,9 @@
 [English](../README.md) · [العربية](README.ar.md) · [Español](README.es.md) · [Français](README.fr.md) · [日本語](README.ja.md) · [한국어](README.ko.md) · [Tiếng Việt](README.vi.md) · [中文 (简体)](README.zh-Hans.md) · [中文（繁體）](README.zh-Hant.md) · [Deutsch](README.de.md) · [Русский](README.ru.md)
 
 
+
+[![LazyingArt banner](https://github.com/lachlanchen/lachlanchen/raw/main/figs/banner.png)](https://github.com/lachlanchen/lachlanchen/blob/main/figs/banner.png)
+
 # Javascript 语音活动检测
 
 [![npm vad-web](https://img.shields.io/npm/v/@ricky0123/vad-web?color=0b69d7&label=%40ricky0123%2Fvad-web&style=flat-square)](https://www.npmjs.com/package/@ricky0123/vad-web)
@@ -30,6 +33,7 @@
 - [CI 与质量门禁 🧱](#ci--quality-gates-)
 - [故障排查 🩺](#troubleshooting-)
 - [赞助 ❤️](#sponsorship-)
+- [❤️ Support](#-support)
 - [关于 Node 支持的重要更新 - 2024 年 10 月 📢](#important-update-about-node-support---oct-2024-)
 - [路线图 🛣️](#roadmap-)
 - [贡献 🤝](#contributing-)
@@ -53,7 +57,7 @@
 
 在底层，这些包通过 [ONNX Runtime Web](https://github.com/microsoft/onnxruntime/tree/main/js/web) / [ONNX Runtime Node.js](https://github.com/microsoft/onnxruntime/tree/main/js/node) 运行 [Silero VAD](https://github.com/snakers4/silero-vad) [[1]](#references)。非常感谢这些项目的贡献者让这件事成为可能。
 
-i18n 状态说明：`i18n/` 目录已存在，并包含多个已翻译的 README 文件。上方语言选择器也包含了计划中/占位用翻译链接（`README.de.md`、`README.ru.md`），这些文件在当前仓库快照中可能尚不存在。
+i18n 状态说明：`i18n/` 文件夹中包含与顶部语言选项对应的 README 翻译内容。
 
 <a id="overview-"></a>
 
@@ -361,6 +365,14 @@ poetry run mkdocs serve
 ## 赞助 ❤️
 
 请为项目提供资金支持，尤其是在你的商业产品依赖此包的情况下。[![Become a Sponsor](https://img.shields.io/static/v1?label=Become%20a%20Sponsor&message=%E2%9D%A4&logo=GitHub&style=flat&color=d42f2d)](https://github.com/sponsors/ricky0123)
+
+<a id="-support"></a>
+
+## ❤️ Support
+
+| Donate | PayPal | Stripe |
+|---|---|---|
+| [![Donate](https://img.shields.io/badge/Donate-LazyingArt-0EA5E9?style=for-the-badge&logo=ko-fi&logoColor=white)](https://chat.lazying.art/donate) | [![PayPal](https://img.shields.io/badge/PayPal-RongzhouChen-00457C?style=for-the-badge&logo=paypal&logoColor=white)](https://paypal.me/RongzhouChen) | [![Stripe](https://img.shields.io/badge/Stripe-Donate-635BFF?style=for-the-badge&logo=stripe&logoColor=white)](https://buy.stripe.com/aFadR8gIaflgfQV6T4fw400) |
 
 <a id="important-update-about-node-support---oct-2024-"></a>
 

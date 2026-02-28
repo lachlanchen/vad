@@ -1,18 +1,28 @@
 [English](README.md) · [العربية](i18n/README.ar.md) · [Español](i18n/README.es.md) · [Français](i18n/README.fr.md) · [日本語](i18n/README.ja.md) · [한국어](i18n/README.ko.md) · [Tiếng Việt](i18n/README.vi.md) · [中文 (简体)](i18n/README.zh-Hans.md) · [中文（繁體）](i18n/README.zh-Hant.md) · [Deutsch](i18n/README.de.md) · [Русский](i18n/README.ru.md)
 
 
-# Voice Activity Detection for Javascript
+[![LazyingArt banner](https://github.com/lachlanchen/lachlanchen/raw/main/figs/banner.png)](https://github.com/lachlanchen/lachlanchen/blob/main/figs/banner.png)
+
+# 🎙️ Voice Activity Detection for JavaScript
 
 [![npm vad-web](https://img.shields.io/npm/v/@ricky0123/vad-web?color=0b69d7&label=%40ricky0123%2Fvad-web&style=flat-square)](https://www.npmjs.com/package/@ricky0123/vad-web)
 [![npm vad-react](https://img.shields.io/npm/v/@ricky0123/vad-react?color=0b69d7&label=%40ricky0123%2Fvad-react&style=flat-square)](https://www.npmjs.com/package/@ricky0123/vad-react)
 [![Docs](https://img.shields.io/badge/docs-vad.ricky0123.com-0a7f5a?style=flat-square)](https://docs.vad.ricky0123.com/)
 [![Demo](https://img.shields.io/badge/demo-live-ff8c00?style=flat-square)](https://www.vad.ricky0123.com)
+[![Monorepo](https://img.shields.io/badge/repo-monorepo-111827?style=flat-square)](https://github.com/ricky0123/vad)
 [![Discord](https://img.shields.io/badge/discord-community-5865F2?style=flat-square&logo=discord&logoColor=white)](https://discord.gg/4WPeGEaSpF)
 [![License: ISC](https://img.shields.io/badge/license-ISC-2ea44f?style=flat-square)](LICENSE)
 
 > Run callbacks on segments of audio with user speech in a few lines of code.
 
-This package aims to provide an accurate, user-friendly voice activity detector (VAD) that runs in the browser. By using this package, you can prompt the user for microphone permissions, start recording audio, send segments of audio with speech to your server for processing, or show a certain animation or indicator when the user is speaking. Note that I have decided [discontinue node support](#important-update-about-node-support---oct-2024-) in order to focus on the browser use case.
+This package aims to provide an accurate, user-friendly voice activity detector (VAD) that runs in the browser. By using this package, you can prompt the user for microphone permissions, start recording audio, send segments of audio with speech to your server for processing, or show a certain animation or indicator when the user is speaking. Note that I have decided [to discontinue node support](#important-update-about-node-support---oct-2024-) in order to focus on the browser use case.
+
+| At a glance | Details |
+| --- | --- |
+| Core packages | `@ricky0123/vad-web`, `@ricky0123/vad-react` |
+| Primary runtime | Browser (`WebAudio` + `getUserMedia`) |
+| Docs | [docs.vad.ricky0123.com](https://docs.vad.ricky0123.com/) |
+| Live demo | [vad.ricky0123.com](https://www.vad.ricky0123.com) |
 
 ## Table of Contents
 
@@ -30,6 +40,7 @@ This package aims to provide an accurate, user-friendly voice activity detector 
 - [CI & Quality Gates 🧱](#ci--quality-gates-)
 - [Troubleshooting 🩺](#troubleshooting-)
 - [Sponsorship ❤️](#sponsorship-)
+- [❤️ Support](#-support)
 - [Important update about node support - Oct 2024 📢](#important-update-about-node-support---oct-2024-)
 - [Roadmap 🛣️](#roadmap-)
 - [Contributing 🤝](#contributing-)
@@ -46,12 +57,12 @@ This package aims to provide an accurate, user-friendly voice activity detector 
 | Survey | [Share your use case](https://uaux2a2ppfv.typeform.com/to/iJG2gCQv) |
 | Contributing guide | [Developer hacking guide](https://docs.vad.ricky0123.com/developer-guide/hacking/) |
 
-- Browse the documentation, the source code of which is located in the `./docs` directory.
-- If you would like to contribute, I have started writing some documentation on how to get started hacking on these packages [here](https://docs.vad.ricky0123.com/developer-guide/hacking/). If you have any questions, you can open an issue here or leave a message on Discord.
+- Documentation source lives in `./docs`.
+- Contributor onboarding starts here: [developer hacking guide](https://docs.vad.ricky0123.com/developer-guide/hacking/). Questions are welcome via issues or Discord.
 
-Under the hood, these packages run [Silero VAD](https://github.com/snakers4/silero-vad) [[1]](#references) using [ONNX Runtime Web](https://github.com/microsoft/onnxruntime/tree/main/js/web) / [ONNX Runtime Node.js](https://github.com/microsoft/onnxruntime/tree/main/js/node). Thanks a lot to those folks for making this possible.
+Under the hood, these packages run [Silero VAD](https://github.com/snakers4/silero-vad) [[1]](#references) using [ONNX Runtime Web](https://github.com/microsoft/onnxruntime/tree/main/js/web) (with historical references to ONNX Runtime Node.js from earlier Node support). Thanks a lot to those folks for making this possible.
 
-Note on i18n status: `i18n/` exists and includes multiple translated README files. The language selector above also contains links for planned/placeholder translations (`README.de.md`, `README.ru.md`) that may not be present in this repository snapshot.
+Note on i18n status: `i18n/` includes translated README files for the language options linked at the top of this file.
 
 ## Overview 🧭
 
@@ -113,7 +124,10 @@ More detailed paths:
 | Docs toolchain | Python 3.10 + Poetry (per CI workflow) |
 | CI Node runtime | Node 18 (per repository workflows) |
 
-Assumption note: examples and docs are consistent with current package versions in this repository snapshot (`@ricky0123/vad-web@0.0.27`, `@ricky0123/vad-react@0.0.33`).
+Repository snapshot package versions (`packages/*/package.json`):
+
+- `@ricky0123/vad-web@0.0.27`
+- `@ricky0123/vad-react@0.0.33`
 
 ## Prerequisites ✅
 
@@ -333,6 +347,12 @@ These workflows are a practical source of truth for expected runtime/tool versio
 ## Sponsorship ❤️
 
 Please contribute to the project financially - especially if your commercial product relies on this package. [![Become a Sponsor](https://img.shields.io/static/v1?label=Become%20a%20Sponsor&message=%E2%9D%A4&logo=GitHub&style=flat&color=d42f2d)](https://github.com/sponsors/ricky0123)
+
+## ❤️ Support
+
+| Donate | PayPal | Stripe |
+|---|---|---|
+| [![Donate](https://img.shields.io/badge/Donate-LazyingArt-0EA5E9?style=for-the-badge&logo=ko-fi&logoColor=white)](https://chat.lazying.art/donate) | [![PayPal](https://img.shields.io/badge/PayPal-RongzhouChen-00457C?style=for-the-badge&logo=paypal&logoColor=white)](https://paypal.me/RongzhouChen) | [![Stripe](https://img.shields.io/badge/Stripe-Donate-635BFF?style=for-the-badge&logo=stripe&logoColor=white)](https://buy.stripe.com/aFadR8gIaflgfQV6T4fw400) |
 
 ## Important update about node support - Oct 2024 📢
 
